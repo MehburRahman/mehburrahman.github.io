@@ -18,6 +18,13 @@ function setTheme(theme, remember = true) {
 }
 
 setTheme(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark', false);
+
+// Follow the system setting until the visitor picks a theme themselves.
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', event => {
+  let saved = null;
+  try { saved = localStorage.getItem('mehbur-theme'); } catch { /* No stored choice. */ }
+  if (!saved) setTheme(event.matches ? 'light' : 'dark', false);
+});
 themeButton?.addEventListener('click', () => {
   setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
 });
@@ -48,28 +55,6 @@ document.addEventListener('click', event => {
   if (!event.target.closest('.site-header')) closeMenu();
 });
 window.matchMedia('(min-width: 961px)').addEventListener('change', closeMenu);
-
-const filterButtons = [...document.querySelectorAll('[data-filter]')];
-const projects = [...document.querySelectorAll('[data-categories]')];
-const projectCount = document.querySelector('.project-count');
-
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const filter = button.dataset.filter;
-    filterButtons.forEach(item => {
-      const selected = item === button;
-      item.classList.toggle('is-active', selected);
-      item.setAttribute('aria-pressed', String(selected));
-    });
-    let visible = 0;
-    projects.forEach(project => {
-      const matches = filter === 'all' || project.dataset.categories.split(' ').includes(filter);
-      project.hidden = !matches;
-      if (matches) visible++;
-    });
-    projectCount.textContent = `${visible} project${visible === 1 ? '' : 's'}`;
-  });
-});
 
 document.querySelectorAll('[data-dialog]').forEach(button => {
   const dialog = document.getElementById(button.dataset.dialog);
@@ -186,7 +171,6 @@ contactForm?.addEventListener('submit', async event => {
     contactForm.removeAttribute('aria-busy');
   }
 });
-if (submitButton) submitButton.disabled = false;
 contactForm?.querySelectorAll('input, textarea').forEach(field => {
   field.addEventListener('input', () => field.setCustomValidity(''));
 });
