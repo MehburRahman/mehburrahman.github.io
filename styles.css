@@ -205,28 +205,9 @@ h1 em { color: var(--green); font-family: var(--serif); font-weight: 400; letter
 
 /* Illustrations for the projects without screenshots. Text inside is decorative (role="img"). */
 .project-art { min-width: 0; padding: 32px; display: flex; flex-direction: column; justify-content: center; }
-.project-art > .ide-window, .project-art > .fabric-dashboard { width: 100%; max-width: 480px; align-self: center; }
+.project-art > .fabric-dashboard { width: 100%; max-width: 480px; align-self: center; }
 .art-label { display: block; margin-bottom: 20px; font-size: 12px; font-weight: 600; letter-spacing: .08em; opacity: .85; }
 .art-caption { display: block; margin-top: 18px; font-size: 13px; opacity: .8; }
-.stack-art { background: #e4e2ee; color: #4b4662; }
-.ide-window { background: #2b2a37; border: 1px solid #555067; border-radius: 8px; color: #d2cfe1; font-size: 11px; }
-.ide-topbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px solid #45414f; color: #b7b2c6; }
-.ide-topbar .icon { width: 14px; height: 14px; }
-.ide-dots { display: inline-flex; gap: 5px; }
-.ide-dots i { width: 8px; height: 8px; background: #6e6880; border-radius: 50%; }
-.ide-body { display: grid; grid-template-columns: 110px 1fr; min-height: 170px; }
-.ide-sidebar { padding: 14px 10px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid #45414f; white-space: nowrap; overflow: hidden; }
-.ide-sidebar > span:first-child { color: #9993a8; font-size: 10px; letter-spacing: .08em; }
-.ide-sidebar .active-file { background: #423d4d; padding: 2px 6px; margin-left: -6px; border-radius: 4px; color: #f0edf8; }
-.ide-editor { padding: 14px; min-width: 0; overflow: hidden; }
-.code-line { display: flex; gap: 12px; font-family: var(--mono); white-space: nowrap; line-height: 1.9; }
-.code-line b { font-weight: 400; color: #7f798e; }
-.code-line i { font-style: normal; color: #c4a7dc; }
-.code-line em { font-style: normal; color: #b9c69f; }
-.vision-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 16px; }
-.vision-flow span:nth-child(odd) { padding: 3px 7px; border: 1px solid #5d5770; border-radius: 4px; white-space: nowrap; }
-.ide-status { display: flex; justify-content: space-between; gap: 10px; padding: 6px 12px; background: #3d3647; font-size: 10px; border-radius: 0 0 8px 8px; }
-.ide-status span:first-child { color: #c3d0ad; }
 .fabric-art { background: #e5dac7; color: #5e4d35; }
 .fabric-dashboard { overflow: hidden; background: #fcf9f1; border: 1px solid #cdbd9f; border-radius: 8px; color: #6d654c; font-size: 11px; }
 .fabric-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #e7ddc9; }
@@ -240,7 +221,6 @@ h1 em { color: var(--green); font-family: var(--serif); font-weight: 400; letter
 .fabric-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-block: 8px; border-top: 1px solid #e5ddc9; }
 .fabric-row > :first-child { color: #2f3f2b; }
 .fabric-row > :last-child { padding: 2px 8px; border-radius: 20px; background: #e8eedf; color: #3f5b38; font-size: 10px; white-space: nowrap; }
-html[data-theme="dark"] .stack-art { background: #262531; color: #d1cbe5; }
 html[data-theme="dark"] .fabric-art { background: #2f2b21; color: #e5d6b4; }
 
 /* Research and ongoing work */
@@ -363,6 +343,10 @@ html[data-theme="dark"] .fabric-art { background: #2f2b21; color: #e5d6b4; }
 .dialog-inner h3 { margin-top: 26px; margin-bottom: 6px; font-size: 16px; font-weight: 600; }
 .dialog-inner p { color: var(--muted); font-size: 16px; line-height: 1.7; }
 .dialog-inner .button { margin-top: 30px; }
+.dialog-media { margin-top: 18px; }
+.dialog-media a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; }
+.dialog-media img { display: block; width: 100%; height: auto; }
+.dialog-media figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; }
 
 /* Tablet */
 @media (max-width: 1024px) {
@@ -418,8 +402,6 @@ html[data-theme="dark"] .fabric-art { background: #2f2b21; color: #e5d6b4; }
   .project-content, .research-feature, .skillforge-feature { padding: 24px; }
   .project-art, .project-media { padding: 20px; }
   .project-content h3 { font-size: 26px; }
-  .ide-body { grid-template-columns: 1fr; }
-  .ide-sidebar { display: none; }
   .education-grid { grid-template-columns: 1fr; }
   .education-card:first-child { grid-column: auto; }
   .skill-row { grid-template-columns: 1fr; gap: 4px; }
